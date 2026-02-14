@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#d14b45"/>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/app-icon-192.png">
+  <link rel="apple-touch-icon" href="assets/app-icon-192.png">
+  <title>Ricardo Routine</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img src="assets/icons/dumbbell.svg" alt="">
+        <div>Ricardo Routine</div>
+      </div>
+      <div class="pill">
+        <button class="badge" id="installBtn">Install</button>
+        <button class="badge" id="shareBtn">Share</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="view"></div>
+
+  <div class="bottomnav">
+    <button class="navbtn active" data-tab="home" onclick="location.hash='home'">Home</button>
+    <button class="navbtn" data-tab="history" onclick="location.hash='history'">History</button>
+    <button class="navbtn" data-tab="settings" onclick="location.hash='settings'">Settings</button>
+  </div>
+
+  <div class="modal" id="modal"></div>
+
+  <script>
+    window.RR_PROGRAMS = [{"id": "db_ppl", "name": "Dumbbell PPL", "icon": "dumbbell", "desc": "Push, Pull, Legs. Dumbbells + bench (flat, incline, decline)."}, {"id": "db_full", "name": "Dumbbell Full Body", "icon": "dumbbell", "desc": "Full body session. Dumbbells + bench."}, {"id": "ez_ppl", "name": "EZ Bar PPL", "icon": "ezbar", "desc": "Push, Pull, Legs with EZ bar + bench."}, {"id": "ez_full", "name": "EZ Bar Full Body", "icon": "ezbar", "desc": "Full body with EZ bar + bench."}, {"id": "im_full", "name": "Ironmaster Home Gym", "icon": "cable", "desc": "Bench + Cable Tower + Leg Attachment + Chin + Crunch."}, {"id": "tilt", "name": "Pelvic Tilt Reset", "icon": "mobility", "desc": "Quick reset (2\u20134 min). Priority #1."}, {"id": "posture", "name": "Posture Reset", "icon": "mobility", "desc": "Ribs down, glutes on, neck neutral."}, {"id": "mobility", "name": "Mobility Flow", "icon": "mobility", "desc": "Hips + T-spine + ankles."}, {"id": "balance", "name": "Balance Mini", "icon": "mobility", "desc": "Single-leg stability."}];
+    window.RR_EX_DB = {"db_ppl": {"cycle": ["Push", "Pull", "Legs"], "days": {"Push": [{"id": "db_bench", "name": "DB Bench Press", "subtitle": "Bench, flat or slight incline"}, {"id": "db_incline", "name": "DB Incline Press", "subtitle": "Bench incline"}, {"id": "db_fly", "name": "DB Fly", "subtitle": "Bench, controlled"}, {"id": "db_ohp", "name": "DB Shoulder Press", "subtitle": "Seated, bench incline"}, {"id": "db_lat_raise", "name": "DB Lateral Raise", "subtitle": "Strict"}, {"id": "db_triceps", "name": "DB Triceps Extension", "subtitle": "Overhead / skullcrusher"}], "Pull": [{"id": "db_row", "name": "DB Row", "subtitle": "Bench supported"}, {"id": "db_pullover", "name": "DB Pullover", "subtitle": "Bench"}, {"id": "db_rear", "name": "DB Rear Delt Raise", "subtitle": "Prone on bench"}, {"id": "db_curl", "name": "DB Curl", "subtitle": "Alternating"}, {"id": "db_hammer", "name": "DB Hammer Curl", "subtitle": "Neutral grip"}], "Legs": [{"id": "db_goblet", "name": "Goblet Squat", "subtitle": "DB goblet"}, {"id": "db_rdl", "name": "DB Romanian Deadlift", "subtitle": "Hinge"}, {"id": "db_split", "name": "Bulgarian Split Squat", "subtitle": "Bench"}, {"id": "db_calf", "name": "Standing Calf Raise", "subtitle": "DBs"}, {"id": "db_abs", "name": "Weighted Crunch", "subtitle": "Bench decline optional"}]}}, "db_full": {"cycle": ["Full Body"], "days": {"Full Body": [{"id": "db_squat", "name": "Goblet Squat", "subtitle": "DB goblet"}, {"id": "db_press", "name": "DB Bench Press", "subtitle": "Bench"}, {"id": "db_row2", "name": "DB Row", "subtitle": "Bench supported"}, {"id": "db_rdl2", "name": "DB Romanian Deadlift", "subtitle": "Hinge"}, {"id": "db_ohp2", "name": "DB Shoulder Press", "subtitle": "Seated"}, {"id": "db_curl2", "name": "DB Curl", "subtitle": "Arms"}, {"id": "db_core2", "name": "Dead Bug", "subtitle": "Core control"}]}}, "ez_ppl": {"cycle": ["Push", "Pull", "Legs"], "days": {"Push": [{"id": "ez_press", "name": "EZ Bar Bench Press", "subtitle": "Bench"}, {"id": "ez_incline", "name": "EZ Bar Incline Press", "subtitle": "Bench incline"}, {"id": "ez_ohp", "name": "EZ Bar Shoulder Press", "subtitle": "Seated"}, {"id": "ez_triceps", "name": "EZ Bar Skullcrusher", "subtitle": "Bench"}], "Pull": [{"id": "ez_row", "name": "EZ Bar Row", "subtitle": "Hinge row"}, {"id": "ez_curl", "name": "EZ Bar Curl", "subtitle": "Strict"}, {"id": "ez_reverse", "name": "EZ Reverse Curl", "subtitle": "Forearms"}], "Legs": [{"id": "ez_rdl", "name": "EZ Romanian Deadlift", "subtitle": "Hinge"}, {"id": "ez_split", "name": "Split Squat (EZ)", "subtitle": "Front rack"}, {"id": "ez_calf", "name": "Calf Raise (EZ)", "subtitle": "Standing"}]}}, "ez_full": {"cycle": ["Full Body"], "days": {"Full Body": [{"id": "ez_squat", "name": "Front Squat (EZ)", "subtitle": "Light, controlled"}, {"id": "ez_press2", "name": "EZ Bench Press", "subtitle": "Bench"}, {"id": "ez_row2", "name": "EZ Row", "subtitle": "Hinge"}, {"id": "ez_rdl2", "name": "EZ Romanian Deadlift", "subtitle": "Hinge"}, {"id": "ez_curl2", "name": "EZ Curl", "subtitle": "Arms"}, {"id": "ez_core2", "name": "Plank", "subtitle": "Core"}]}}, "im_full": {"cycle": ["Upper", "Lower", "Full"], "days": {"Upper": [{"id": "im_lat", "name": "Lat Pulldown (Cable)", "subtitle": "Cable Tower"}, {"id": "im_row", "name": "Seated Row (Cable)", "subtitle": "Cable Tower"}, {"id": "im_press", "name": "DB Bench Press", "subtitle": "Bench"}, {"id": "im_chin", "name": "Chin-up", "subtitle": "Chin attachment"}, {"id": "im_pressdown", "name": "Triceps Pressdown (Cable)", "subtitle": "Cable Tower"}], "Lower": [{"id": "im_legext", "name": "Leg Extension", "subtitle": "Leg Attachment PRO"}, {"id": "im_legcurl", "name": "Leg Curl", "subtitle": "Leg Attachment PRO"}, {"id": "im_rdl", "name": "DB Romanian Deadlift", "subtitle": "DBs"}, {"id": "im_calf", "name": "Calf Raise", "subtitle": "DBs"}], "Full": [{"id": "im_pulldown2", "name": "Lat Pulldown (Cable)", "subtitle": "Cable Tower"}, {"id": "im_squat", "name": "Goblet Squat", "subtitle": "DB"}, {"id": "im_press2", "name": "DB Bench Press", "subtitle": "Bench"}, {"id": "im_row2", "name": "Seated Row (Cable)", "subtitle": "Cable Tower"}, {"id": "im_crunch", "name": "Crunch (Bench)", "subtitle": "Crunch attachment"}]}}, "tilt": {"cycle": ["Pelvic Tilt Reset"], "days": {"Pelvic Tilt Reset": [{"id": "tilt1", "name": "90/90 Breathing", "subtitle": "Ribs down"}, {"id": "tilt2", "name": "Posterior Pelvic Tilt", "subtitle": "Slow control"}, {"id": "tilt3", "name": "Glute Bridge Hold", "subtitle": "Glutes on"}, {"id": "tilt4", "name": "Hip Flexor Stretch", "subtitle": "1 min/side"}]}}, "posture": {"cycle": ["Posture Reset"], "days": {"Posture Reset": [{"id": "pos1", "name": "Wall Slide", "subtitle": "Back flat"}, {"id": "pos2", "name": "Scap Retraction", "subtitle": "Shoulder blades"}, {"id": "pos3", "name": "Ribs Down Drill", "subtitle": "Core control"}, {"id": "pos4", "name": "Chin Tuck", "subtitle": "Neck"}]}}, "mobility": {"cycle": ["Mobility Flow"], "days": {"Mobility Flow": [{"id": "mob1", "name": "Cat-Cow", "subtitle": "Spine"}, {"id": "mob2", "name": "90/90 Hip Switch", "subtitle": "Hips"}, {"id": "mob3", "name": "Thoracic Rotation", "subtitle": "T-spine"}, {"id": "mob4", "name": "Ankle Rocks", "subtitle": "Ankles"}]}}, "balance": {"cycle": ["Balance Mini"], "days": {"Balance Mini": [{"id": "bal1", "name": "Single-Leg Stand", "subtitle": "30\u201360s/side"}, {"id": "bal2", "name": "Single-Leg RDL (Bodyweight)", "subtitle": "Control"}, {"id": "bal3", "name": "Calf Raise (Single)", "subtitle": "Slow"}]}}};
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
