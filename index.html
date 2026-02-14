@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ricardo Routine — Final</title>
+<style>
+body{background:#0b0b0b;color:#fff;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+.card{background:#141414;padding:24px;border-radius:16px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+button{background:#d14b45;border:none;color:#fff;padding:14px 22px;border-radius:10px;font-size:16px;cursor:pointer}
+#anim{width:260px;height:260px;margin:20px auto}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>Dumbbell Bench Press</h2>
+<div id="anim"></div>
+<button onclick="play()">PLAY</button>
+</div>
+<script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+<script>
+const anim = lottie.loadAnimation({
+  container: document.getElementById('anim'),
+  renderer: 'svg',
+  loop: true,
+  autoplay: false,
+  path: 'assets/lottie/exercise_loop.json'
+});
+function play(){ anim.play(); }
+</script>
+</body>
+</html>
